@@ -1,19 +1,13 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-function Header(){
+function Header() {
   return (
     <div>
-      <h1>Help Queue!</h1>
-      <Link to="/">Home</Link>
-      <br/>
-      <Link to="/newticket">Create Ticket</Link>
-      <br/>
-      <Link to="/wrongpage">to non existing page</Link>
-      <br/>
-      <Link to="/admin">to Admin</Link>
+      <h1>Mine!</h1>
+      <br />
+      <br />
     </div>
-
   );
 }
 

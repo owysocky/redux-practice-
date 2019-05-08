@@ -1,32 +1,31 @@
-const webpack = require('webpack');
-const { resolve } = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require("webpack");
+const { resolve } = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-
   entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
+    "react-hot-loader/patch",
+    "webpack-dev-server/client?http://localhost:8080",
+    "webpack/hot/only-dev-server",
     resolve(__dirname, "src", "index.jsx")
   ],
 
   output: {
-    filename: 'app.bundle.js',
-    path: resolve(__dirname, 'build'),
-    publicPath: '/'
+    filename: "app.bundle.js",
+    path: resolve(__dirname, "build"),
+    publicPath: "/"
   },
 
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: [".js", ".jsx"]
   },
 
-  devtool: '#source-map',
+  devtool: "#source-map",
 
   devServer: {
     hot: true,
-    contentBase: resolve(__dirname, 'build'),
-    publicPath: '/'
+    contentBase: resolve(__dirname, "build"),
+    publicPath: "/"
   },
 
   module: {
@@ -36,23 +35,17 @@ module.exports = {
         loader: "babel-loader",
         exclude: /node_modules/,
         options: {
-          presets: [
-            ["es2015", {"modules": false}],
-            "react",
-          ],
-          plugins: [
-            "react-hot-loader/babel",
-            "styled-jsx/babel"
-          ]
+          presets: [["es2015", { modules: false }], "react"],
+          plugins: ["react-hot-loader/babel", "styled-jsx/babel"]
         }
       },
       {
         test: /\.(png|gif|jp(e*)g|svg)$/,
         use: {
-          loader: 'url-loader',
+          loader: "url-loader",
           options: {
             limit: 8000,
-            name: 'images/[hash]-[name].[ext]'
+            name: "images/[hash]-[name].[ext]"
           }
         }
       }
@@ -63,10 +56,10 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
-      template:'template.ejs',
-      appMountId: 'react-app-root',
-      title: 'React Help Queue',
-      filename: resolve(__dirname, "build", "index.html"),
-    }),
+      template: "template.ejs",
+      appMountId: "react-app-root",
+      title: "Minesweeper",
+      filename: resolve(__dirname, "build", "index.html")
+    })
   ]
 };
