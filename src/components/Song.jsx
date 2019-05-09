@@ -3,21 +3,33 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 const Song = props => {
-  function handleChangeLyrics(event) {
-    event.preventDefault();
+  function handleChangeLyrics() {
     const { dispatch } = props;
 
     let action = {
       type: "UPDATE_CURRENT_LINE",
-
       currentLine: props.songState.currentLine
     };
     dispatch(action);
   }
 
+  function handlePickSong(songNumber) {
+    let lyrics = songNumber;
+    console.log(lyrics);
+
+    // var id = event;
+    // alert(id);
+    // const { dispatch } = props;
+    // let action = {
+    //   type: "PICK_SONG",
+    //   currentSong: props.songState.lyrics
+    // };
+    // dispatch(action);
+  }
+
   return (
     <div>
-      <h3>{props.songState.lyrics[1].songId}</h3>
+      <h3 onClick={()=>handlePickSong(props.songState.lyrics[1].songId)}>{props.songState.lyrics[1].songId}</h3>
       <br />
       <div onClick={handleChangeLyrics}>
         <h4>{props.songState.lyrics[1].text[props.songState.currentLine]}</h4>
